@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mariadb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    restart: always
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    restart: always
